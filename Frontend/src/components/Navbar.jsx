@@ -7,7 +7,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaHandsHelping } from 'react-icons/fa';
 
 const privateNavigation = [
-  { name: 'Dashboard', href: '/dashboard' },
+  { name: 'Help-board', href: '/requests' },
   { name: 'Profile', href: '/profile' },
 ];
 
