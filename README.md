@@ -60,3 +60,43 @@ Hands-On Volunteering Platform is a web-based application that connects voluntee
    ```bash
    git clone https://github.com/yourusername/hands-on-volunteering-platform.git
    cd hands-on-volunteering-platform/backend
+2. Install backend dependencies:
+   ```bash
+   cd backend
+   npm install
+3. env file in backend:
+   ```bash
+   PORT=4000
+   MONGO_URI=mongodb+srv://jnkarim:uzumaki@handson.2bhpg.mongodb.net/
+   JWT_SECRET=netninjanarutouzumaki
+4. Start the backend server:
+   ```bash
+   npm run dev
+5. Navigate to the frontend directory:
+   ```bash
+   cd ../frontend
+   npm install
+   npm run dev
+
+## 🛠️ API Endpoints
+
+### Authentication Routes
+
+| Method | Endpoint             | Description                      |
+|--------|----------------------|----------------------------------|
+| POST   | `/api/user/signup`   | Register a new user              |
+| POST   | `/api/user/login`    | Login an existing user           |
+| POST   | `/api/user/logout`   | Logout the user                  |
+| GET    | `/api/user/profile`  | Get user profile (Protected)     |
+| PUT    | `/api/user/profile`  | Update user profile (Protected)  |
+
+### Event Routes
+
+| Method | Endpoint                | Description                      |
+|--------|-------------------------|----------------------------------|
+| GET    | `/api/events`           | Get all events (Public)         |
+| GET    | `/api/events/:id`       | Get a single event (Public)     |
+| POST   | `/api/events`           | Create a new event (Protected)  |
+| PUT    | `/api/events/:id`       | Update an event (Protected)     |
+| DELETE | `/api/events/:id`       | Delete an event (Protected)     |
+| POST   | `/api/events/:id/join`  | Join an event (Protected)       |
