@@ -9,6 +9,7 @@ import EditProfilePage from './pages/EditProfilePage';
 import ProtectedRoute from './components/ProtectedRoute'; // <-- Import it
 import Event from "./pages/Event";
 import CreateEvent from "./pages/CreateEvent";
+import HelpRequests from './pages/HelpRequests';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/events" element={<Event />} />
           <Route path="/create-event" element={<CreateEvent />} />
+          <Route path="/requests" element={<HelpRequests />} />
 
           {/* Protected Routes */}
           <Route
