@@ -11,6 +11,10 @@ const privateNavigation = [
   { name: 'Profile', href: '/profile' },
 ];
 
+const publicNavigation = [
+  { name: 'Events', href: '/events' },
+];
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
@@ -84,12 +88,32 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn }) {
           {/* Divider */}
           <div className="h-px bg-white w-full" />
 
-          {/* Navigation Links (Only when logged in) */}
-          {isLoggedIn && (
-            <div className="bg-white py-2">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex space-x-4">
-                  {privateNavigation.map((item) => {
+          {/* Navigation Links */}
+          <div className="bg-white py-2">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="flex space-x-4">
+                {/* Always show Events link */}
+                {publicNavigation.map((item) => {
+                  const isActive = location.pathname === item.href;
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className={classNames(
+                        isActive
+                          ? 'bg-gray-100 text-black'
+                          : 'text-gray-800 hover:text-green-600',
+                        'px-3 py-2 text-md font-medium transition rounded-md'
+                      )}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
+
+                {/* Show private navigation links only if logged in */}
+                {isLoggedIn &&
+                  privateNavigation.map((item) => {
                     const isActive = location.pathname === item.href;
                     return (
                       <Link
@@ -106,14 +130,34 @@ export default function Navbar({ isLoggedIn, setIsLoggedIn }) {
                       </Link>
                     );
                   })}
-                </div>
               </div>
             </div>
-          )}
+          </div>
 
           {/* Mobile Menu */}
           <DisclosurePanel className="sm:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3 bg-white">
+              {/* Always show Events link */}
+              {publicNavigation.map((item) => {
+                const isActive = location.pathname === item.href;
+                return (
+                  <DisclosureButton
+                    key={item.name}
+                    as={Link}
+                    to={item.href}
+                    className={classNames(
+                      isActive
+                        ? 'bg-gray-100 text-black'
+                        : 'text-gray-800 hover:bg-gray-100 hover:text-black',
+                      'block rounded-md px-3 py-2 text-base font-medium'
+                    )}
+                  >
+                    {item.name}
+                  </DisclosureButton>
+                );
+              })}
+
+              {/* Show private navigation links only if logged in */}
               {isLoggedIn &&
                 privateNavigation.map((item) => {
                   const isActive = location.pathname === item.href;
