@@ -1,43 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const HelpRequest = require('../models/HelpRequest');
+const helpRequestController = require('../controllers/helpRequestController');
 
-// Get all help requests
-router.get('/', async (req, res) => {
-  try {
-    const requests = await HelpRequest.find();
-    res.json(requests);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
+// Create
+router.post('/', helpRequestController.createHelpRequest);
 
-// Create a help request
-router.post('/', async (req, res) => {
-  const { title, description, urgency, createdBy } = req.body;
-  try {
-    const newRequest = new HelpRequest({ title, description, urgency, createdBy });
-    const savedRequest = await newRequest.save();
-    res.status(201).json(savedRequest);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-});
+// Read all
+router.get('/', helpRequestController.getAllHelpRequests);
 
-// Add a comment to a help request
-router.post('/:id/comment', async (req, res) => {
-  const { text, user } = req.body;
-  try {
-    const request = await HelpRequest.findById(req.params.id);
-    if (!request) return res.status(404).json({ message: 'Help request not found' });
+// Read one
+router.get('/:id', helpRequestController.getHelpRequestById);
 
-    request.comments.push({ text, user });
-    await request.save();
+// Update
+router.put('/:id', helpRequestController.updateHelpRequest);
 
-    res.json(request);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
+// Delete
+router.delete('/:id', helpRequestController.deleteHelpRequest);
+
+// Add comment
+router.post('/:id/comments', helpRequestController.addComment);
 
 module.exports = router;
