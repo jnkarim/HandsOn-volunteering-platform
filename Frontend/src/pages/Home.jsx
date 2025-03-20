@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 
+const isLoggedIn = () => {
+  return localStorage.getItem('authToken') !== null;
+};
+
 export default function HomePage() {
   return (
     <div className="bg-white">
@@ -16,16 +20,18 @@ export default function HomePage() {
             Ready to change the world?
           </p>
           <p className="text-2xl font-semibold text-white mb-8">
-
             Ready to change the world?
           </p>
           <div className="space-x-4">
-            <Link
-              to="/signup"
-              className="bg-white text-green-600 px-6 py-3 rounded-md text-lg font-semibold hover:bg-green-50 transition"
-            >
-              Get Started
-            </Link>
+            {!isLoggedIn() && (
+              <Link
+                to="/signup"
+                className="bg-white text-green-600 px-6 py-3 rounded-md text-lg font-semibold hover:bg-green-50 transition"
+              >
+                Get Started
+              </Link>
+            )}
+            {/* Always show the Explore Events button */}
             <Link
               to="/events"
               className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-white hover:text-green-600 transition"
@@ -214,12 +220,14 @@ export default function HomePage() {
             Join HandsOn today and be part of a community that's changing
             Bangladesh, one act of kindness at a time.
           </p>
-          <Link
-            to="/signup"
-            className="bg-white text-green-600 px-6 py-3 rounded-md text-lg font-semibold hover:bg-green-50 transition"
-          >
-            Join Now
-          </Link>
+          {!isLoggedIn() && (
+            <Link
+              to="/signup"
+              className="bg-white text-green-600 px-6 py-3 rounded-md text-lg font-semibold hover:bg-green-50 transition"
+            >
+              Join Now
+            </Link>
+          )}
         </div>
       </div>
     </div>
