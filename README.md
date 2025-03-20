@@ -106,7 +106,6 @@ Hands-On Volunteering Platform is a web-based application that connects voluntee
 ### Preview 1
 ![Screenshot 1](Frontend/src/assets/img7.png)
 ![Screenshot 1](Frontend/src/assets/img9.png)
-![Screenshot 1](Frontend/src/assets/img10.png)
 ![Screenshot 1](Frontend/src/assets/img11.png)
 
 
