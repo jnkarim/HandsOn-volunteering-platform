@@ -114,12 +114,6 @@ const ProfilePage = () => {
             Edit Profile
           </Link>
 
-          <Link
-            to="/profile/history"
-            className="inline-block w-full md:w-auto text-center text-green-600 hover:text-green-700 font-semibold py-3 px-6 rounded-lg transition border border-green-500 hover:border-green-600"
-          >
-            View Volunteer History →
-          </Link>
         </div>
       </div>
     </div>
