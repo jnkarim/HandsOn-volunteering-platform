@@ -101,21 +101,22 @@ Hands-On Volunteering Platform is a web-based application that connects voluntee
 | DELETE | `/api/events/:id`       | Delete an event (Protected)     |
 | POST   | `/api/events/:id/join`  | Join an event (Protected)       |
 
+## App Interface Previews
 
-### Screenshot 1
-![Screenshot 1](assets/img1.png)
+### Preview 1
+![Screenshot 1](Frontend/src/assets/img1.png)
 
-### Screenshot 2
-![Screenshot 2](assets/img2.png)
+### Preview 2
+![Screenshot 2](Frontend/src/assets/img2.png)
 
-### Screenshot 3
-![Screenshot 3](assets/img3.png)
+### Preview 3
+![Screenshot 3](Frontend/src/assets/img3.png)
 
-### Screenshot 4
-![Screenshot 4](assets/img4.png)
+### Preview 4
+![Screenshot 4](Frontend/src/assets/img4.png)
 
-### Screenshot 5
-![Screenshot 5](assets/img5.png)
+### Preview 5
+![Screenshot 5](Frontend/src/assets/img5.png)
 
-### Screenshot 6
-![Screenshot 6](assets/img6.png)
+### Preview 6
+![Screenshot 6](Frontend/src/assets/img6.png)
