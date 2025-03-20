@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
 
 const api = axios.create({
   baseURL: "http://localhost:4000/api",
@@ -17,7 +17,7 @@ const categoryOptions = [
 ];
 
 const CreateEvent = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
   const [newEvent, setNewEvent] = useState({
     title: "",
@@ -25,7 +25,7 @@ const CreateEvent = () => {
     date: "",
     time: "",
     location: "",
-    categories: [], // renamed to categories (plural)
+    category: "", 
   });
 
   const handleInputChange = (e) => {
@@ -36,20 +36,14 @@ const CreateEvent = () => {
     }));
   };
 
-  const toggleCategory = (category) => {
-    setNewEvent((prevState) => {
-      const isSelected = prevState.categories.includes(category);
-      return {
-        ...prevState,
-        categories: isSelected
-          ? prevState.categories.filter((c) => c !== category)
-          : [...prevState.categories, category],
-      };
-    });
-  };
-
   const handleCreateEvent = async (e) => {
     e.preventDefault();
+
+
+    if (!newEvent.category) {
+      alert("Please select a category.");
+      return;
+    }
 
     try {
       const token = localStorage.getItem("authToken");
@@ -73,11 +67,11 @@ const CreateEvent = () => {
         date: "",
         time: "",
         location: "",
-        categories: [],
+        category: "",
       });
 
       alert("Event created successfully!");
-      navigate("/events");
+      navigate("/events"); 
     } catch (error) {
       console.error("Error creating event:", error.response?.data || error.message);
       alert("Error creating event. Please try again.");
@@ -172,33 +166,25 @@ const CreateEvent = () => {
             />
           </div>
 
-          {/* Categories */}
+          {/* Category */}
           <div>
-            <label className="block text-sm font-medium text-green-700 mb-2">
-              Categories
+            <label className="block text-sm font-medium text-green-700">
+              Category
             </label>
-            <div className="flex flex-wrap gap-3">
+            <select
+              name="category"
+              value={newEvent.category}
+              onChange={handleInputChange}
+              required
+              className="mt-1 block w-full p-3 border border-green-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
+            >
+              <option value="">Select a category</option>
               {categoryOptions.map((category) => (
-                <label
-                  key={category}
-                  className={`flex items-center px-4 py-2 border rounded-lg cursor-pointer transition ${
-                    newEvent.categories.includes(category)
-                      ? "bg-green-500 text-white border-green-500"
-                      : "bg-white text-green-700 border-green-300 hover:bg-green-100"
-                  }`}
-                >
-                  <input
-                    type="checkbox"
-                    name="categories"
-                    value={category}
-                    checked={newEvent.categories.includes(category)}
-                    onChange={() => toggleCategory(category)}
-                    className="hidden"
-                  />
+                <option key={category} value={category}>
                   {category}
-                </label>
+                </option>
               ))}
-            </div>
+            </select>
           </div>
 
           {/* Submit Button */}
