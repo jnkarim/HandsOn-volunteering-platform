@@ -1,46 +1,38 @@
 require('dotenv').config();
-
 const express = require('express');
 const mongoose = require('mongoose');
-const userRoutes = require('./routes/user'); // Import user routes
 const cors = require('cors');
+const userRoutes = require('./routes/user');
+const eventRoutes = require('./routes/eventRoutes');
 
-// Express app
 const app = express();
+const PORT = process.env.PORT || 4000;
 
 // Middleware
 app.use(express.json());
-
-// Enable CORS (if your frontend is on a different port)
 app.use(
   cors({
-    origin: 'http://localhost:5173', 
-    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'], 
-    allowedHeaders: ['Content-Type', 'Authorization'], 
-    credentials: true, 
-  }) 
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+  })
 );
-
-// Simple request logger middleware
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path}`);
-  next();
-});
 
 // Routes
 app.use('/api', userRoutes);
+app.use('/api/events', eventRoutes);
 
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     console.log('Connected to database');
-    // Start the server after database connection is established
-    app.listen(process.env.PORT, () => {
-      console.log(`Listening for requests on port ${process.env.PORT}`);
+    app.listen(PORT, () => {
+      console.log(`Listening for requests on port ${PORT}`);
     });
   })
   .catch((err) => {
     console.error('Database connection failed', err);
-    process.exit(1); 
+    process.exit(1);
   });

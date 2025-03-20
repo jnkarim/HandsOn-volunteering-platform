@@ -53,7 +53,7 @@ const ProfilePage = () => {
     <div className="bg-gray-100 min-h-screen py-12 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
         {/* Profile Card */}
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden transition hover:shadow-2xl">
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
           <div className="p-8 text-center">
             <h1 className="text-2xl font-bold text-gray-900">{user.name}</h1>
             <p className="text-gray-500">{user.email}</p>
