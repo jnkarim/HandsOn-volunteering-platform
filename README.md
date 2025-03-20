@@ -74,7 +74,7 @@ Hands-On Volunteering Platform is a web-based application that connects voluntee
    npm run dev
 5. Navigate to the frontend directory:
    ```bash
-   cd ../frontend
+   cd frontend
    npm install
    npm run dev
 
