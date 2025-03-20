@@ -40,12 +40,43 @@ const signupUser = async (req, res) => {
 // Logout a user
 const logoutUser = async (req, res) => {
   try {
-    // Optionally, you can invalidate the token here (e.g., add it to a blacklist)
-    // For now, we'll just return a success message
+    //return a success message
     res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-module.exports = { signupUser, loginUser, logoutUser }; // Add logoutUser
+// Get user profile
+const getProfile = async (req, res) => {
+  try {
+    const user = req.user;
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Update user profile
+const updateProfile = async (req, res) => {
+  const { name, email, bio, skills, causes } = req.body;
+
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.user._id,
+      { name, email, bio, skills, causes },
+      { new: true } // Return the updated document
+    );
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { signupUser, loginUser, logoutUser, getProfile, updateProfile };
