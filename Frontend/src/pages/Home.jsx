@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   return (
@@ -10,7 +10,14 @@ export default function HomePage() {
             Welcome to <span className="font-pacifico">HandsOn</span>
           </h1>
           <p className="text-xl text-white mb-8">
-            Join a vibrant community of changemakers in Bangladesh and make a real difference in your community. Discover volunteer opportunities, collaborate with others, and track your impact—all in one place.
+            Join a vibrant community of changemakers in Bangladesh and make a
+            real difference in your community. Discover volunteer opportunities,
+            collaborate with others, and track your impact—all in one place.
+            Ready to change the world?
+          </p>
+          <p className="text-2xl font-semibold text-white mb-8">
+
+            Ready to change the world?
           </p>
           <div className="space-x-4">
             <Link
@@ -53,9 +60,12 @@ export default function HomePage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Discover Events</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                Discover Events
+              </h3>
               <p className="text-gray-600">
-                Find and join volunteer-driven events that align with your passions and skills.
+                Find and join volunteer-driven events that align with your
+                passions and skills.
               </p>
             </div>
             <div className="text-center">
@@ -75,9 +85,12 @@ export default function HomePage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Build Teams</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                Build Teams
+              </h3>
               <p className="text-gray-600">
-                Collaborate with like-minded individuals to tackle large-scale social challenges.
+                Collaborate with like-minded individuals to tackle large-scale
+                social challenges.
               </p>
             </div>
             <div className="text-center">
@@ -97,17 +110,20 @@ export default function HomePage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Track Your Impact</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                Track Your Impact
+              </h3>
               <p className="text-gray-600">
-                Log your contributions and see the tangible difference you're making in your community.
+                Log your contributions and see the tangible difference you're
+                making in your community.
               </p>
             </div>
           </div>
         </div>
       </div>
 
-       {/* Volunteer Photos Section */}
-       <div className="py-16 bg-[#f0eee2]">
+      {/* Volunteer Photos Section */}
+      <div className="py-16 bg-[#f0eee2]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
             Our Volunteers in Action
@@ -120,7 +136,6 @@ export default function HomePage() {
                 alt="Volunteers planting trees"
                 className="w-full h-64 object-cover rounded-lg"
               />
-
             </div>
             {/* Photo 2 */}
             <div className="relative group">
@@ -129,7 +144,6 @@ export default function HomePage() {
                 alt="Volunteers distributing food"
                 className="w-full h-64 object-cover rounded-lg"
               />
-
             </div>
             {/* Photo 3 */}
             <div className="relative group">
@@ -138,7 +152,6 @@ export default function HomePage() {
                 alt="Volunteers teaching children"
                 className="w-full h-64 object-cover rounded-lg"
               />
-
             </div>
           </div>
         </div>
@@ -155,34 +168,41 @@ export default function HomePage() {
               <div className="bg-green-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-white text-2xl font-bold">1</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Sign Up</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                Sign Up
+              </h3>
               <p className="text-gray-600">
-                Create your free account and join the HandsOn community in just a few clicks.
+                Create your free account and join the HandsOn community in just
+                a few clicks.
               </p>
             </div>
             <div className="text-center">
               <div className="bg-green-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-white text-2xl font-bold">2</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Find Opportunities</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                Find Opportunities
+              </h3>
               <p className="text-gray-600">
-                Browse through a wide range of volunteer events and initiatives near you.
+                Browse through a wide range of volunteer events and initiatives
+                near you.
               </p>
             </div>
             <div className="text-center">
               <div className="bg-green-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-white text-2xl font-bold">3</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Make a Difference</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                Make a Difference
+              </h3>
               <p className="text-gray-600">
-                Join events, contribute your time, and track your impact over time.
+                Join events, contribute your time, and track your impact over
+                time.
               </p>
             </div>
           </div>
         </div>
       </div>
-
-     
 
       {/* Call-to-Action Section */}
       <div className="bg-green-500 py-20">
@@ -191,7 +211,8 @@ export default function HomePage() {
             Ready to Make a Difference in Bangladesh?
           </h2>
           <p className="text-xl text-white mb-8">
-            Join HandsOn today and be part of a community that's changing Bangladesh, one act of kindness at a time.
+            Join HandsOn today and be part of a community that's changing
+            Bangladesh, one act of kindness at a time.
           </p>
           <Link
             to="/signup"

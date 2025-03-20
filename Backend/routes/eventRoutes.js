@@ -6,6 +6,7 @@ const {
   getEventById,
   updateEvent,
   deleteEvent,
+  joinEvent, // Import the new function
 } = require('../controllers/eventController');
 const requireAuth = require('../middleware/requireAuth');
 
@@ -15,5 +16,6 @@ router.get('/', getEvents); // Allow unauthenticated users to fetch events
 router.get('/:id', getEventById); // Allow unauthenticated users to fetch a single event
 router.put('/:id', requireAuth, updateEvent); // Only authenticated users can update events
 router.delete('/:id', requireAuth, deleteEvent); // Only authenticated users can delete events
+router.post('/:id/join', requireAuth, joinEvent); // Only authenticated users can join events
 
 module.exports = router;
