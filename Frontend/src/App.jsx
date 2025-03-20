@@ -8,6 +8,7 @@ import ProfilePage from "./pages/ProfilePage";
 import EditProfilePage from './pages/EditProfilePage';
 import ProtectedRoute from './components/ProtectedRoute'; // <-- Import it
 import Event from "./pages/Event";
+import CreateEvent from "./pages/CreateEvent";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/events" element={<Event />} />
+          <Route path="/create-event" element={<CreateEvent />} />
 
           {/* Protected Routes */}
           <Route
