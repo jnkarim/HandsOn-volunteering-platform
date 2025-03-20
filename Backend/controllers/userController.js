@@ -58,4 +58,25 @@ const getProfile = async (req, res) => {
   }
 };
 
-module.exports = { signupUser, loginUser, logoutUser, getProfile }; 
+// Update user profile
+const updateProfile = async (req, res) => {
+  const { name, email, bio, skills, causes } = req.body;
+
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.user._id,
+      { name, email, bio, skills, causes },
+      { new: true } // Return the updated document
+    );
+
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { signupUser, loginUser, logoutUser, getProfile, updateProfile };

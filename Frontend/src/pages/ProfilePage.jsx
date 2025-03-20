@@ -6,7 +6,6 @@ const ProfilePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch user profile data from the backend
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
@@ -36,77 +35,88 @@ const ProfilePage = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
+      <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-green-500 border-opacity-50"></div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex justify-center items-center min-h-screen bg-gray-100">
         <p className="text-red-500 text-lg">{error}</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-gray-50 min-h-screen py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white shadow-md rounded-lg p-8">
-          {/* Profile Header */}
-          <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-900">{user.name}</h1>
-            <p className="text-gray-600 mt-2">{user.email}</p>
-            <p className="text-gray-600 mt-4">{user.bio}</p>
+    <div className="bg-gray-100 min-h-screen py-12 px-4">
+      <div className="max-w-4xl mx-auto space-y-8">
+        {/* Profile Card */}
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden transition hover:shadow-2xl">
+          <div className="p-8 text-center">
+            <h1 className="text-2xl font-bold text-gray-900">{user.name}</h1>
+            <p className="text-gray-500">{user.email}</p>
+            {user.bio && (
+              <p className="mt-4 text-gray-600 italic">{user.bio}</p>
+            )}
           </div>
+        </div>
 
-          {/* Skills Section */}
-          <div className="mt-8">
-            <h2 className="text-xl font-semibold text-gray-900">Skills</h2>
-            <div className="mt-4 flex flex-wrap gap-2">
+        {/* Skills Section */}
+        <div className="bg-white rounded-xl shadow p-6">
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">
+            Skills
+          </h2>
+          {user.skills && user.skills.length > 0 ? (
+            <div className="flex flex-wrap gap-3">
               {user.skills.map((skill, index) => (
                 <span
                   key={index}
-                  className="bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm"
+                  className="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium"
                 >
                   {skill}
                 </span>
               ))}
             </div>
-          </div>
+          ) : (
+            <p className="text-gray-500">No skills added yet.</p>
+          )}
+        </div>
 
-          {/* Causes Section */}
-          <div className="mt-8">
-            <h2 className="text-xl font-semibold text-gray-900">Causes I Support</h2>
-            <div className="mt-4 flex flex-wrap gap-2">
+        {/* Causes Section */}
+        <div className="bg-white rounded-xl shadow p-6">
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">
+            Causes I Support
+          </h2>
+          {user.causes && user.causes.length > 0 ? (
+            <div className="flex flex-wrap gap-3">
               {user.causes.map((cause, index) => (
                 <span
                   key={index}
-                  className="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm"
+                  className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium"
                 >
                   {cause}
                 </span>
               ))}
             </div>
-          </div>
-
-          {/* Edit Profile Button */}
-          <div className="mt-8 text-center">
-            <Link
-              to="/profile/edit"
-              className="bg-green-500 text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-green-600 transition"
-            >
-              Edit Profile
-            </Link>
-          </div>
+          ) : (
+            <p className="text-gray-500">No causes supported yet.</p>
+          )}
         </div>
 
-        {/* Volunteer History Link */}
-        <div className="mt-8 text-center">
+        {/* Actions */}
+        <div className="flex flex-col md:flex-row justify-center gap-4">
+          <Link
+            to="/profile/edit"
+            className="inline-block w-full md:w-auto text-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition"
+          >
+            Edit Profile
+          </Link>
+
           <Link
             to="/profile/history"
-            className="text-green-600 hover:text-green-700 font-semibold"
+            className="inline-block w-full md:w-auto text-center text-green-600 hover:text-green-700 font-semibold py-3 px-6 rounded-lg transition border border-green-500 hover:border-green-600"
           >
             View Volunteer History →
           </Link>
